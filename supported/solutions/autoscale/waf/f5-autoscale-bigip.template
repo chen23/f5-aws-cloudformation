@@ -1087,11 +1087,6 @@
       "Properties": {
         "VPCZoneIdentifier": { "Ref": "subnets" },
         "Cooldown": "1500",
-        "LoadBalancerNames": [
-          {
-            "Ref": "bigipElasticLoadBalancer"
-          }
-        ],
         "HealthCheckGracePeriod": "1500",
         "HealthCheckType": "EC2",
         "LaunchConfigurationName": {
@@ -1190,11 +1185,6 @@
       "DependsOn": "BigipAutoscaleGroup",
       "Properties": {
         "ActionsEnabled": "True",
-        "AlarmActions": [
-          {
-            "Ref": "BigipScaleUpPolicy"
-          }
-        ],
         "AlarmDescription": "Throughput exceeds average threshold after 1 successive interval of 1 minute",
         "ComparisonOperator": "GreaterThanThreshold",
         "EvaluationPeriods": "1",
@@ -1214,11 +1204,6 @@
       "DependsOn": "BigipAutoscaleGroup",
       "Properties": {
         "ActionsEnabled": "True",
-        "AlarmActions": [
-          {
-            "Ref": "BigipScaleDownPolicy"
-          }
-        ],
         "AlarmDescription": "Throughput below average threshold for 10 successive intervals of 5 minutes",
         "ComparisonOperator": "LessThanThreshold",
         "EvaluationPeriods": "10",
